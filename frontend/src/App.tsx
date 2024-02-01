@@ -1,10 +1,10 @@
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import HomePage from './pages/Home';
 
 function App() {
   return (
     <div>
-      <HomePage />
+      <Outlet />
     </div>
   );
 }
