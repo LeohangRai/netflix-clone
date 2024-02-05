@@ -1,3 +1,5 @@
+import { ActionType } from '../enums';
+
 export interface Movie {
   id: string;
   title: string;
@@ -6,4 +8,24 @@ export interface Movie {
   videoUrl: string;
   duration: string;
   genre: string;
+}
+
+export type FetchAction<K> =
+  | {
+      type: ActionType.FETCHING_DATA;
+      payload?: null;
+    }
+  | {
+      type: ActionType.FETCH_SUCCESS;
+      payload: K;
+    }
+  | {
+      type: ActionType.FETCH_ERROR;
+      payload: string;
+    };
+
+export interface FetchState<K> {
+  data: K | null;
+  error: string | null;
+  loading: boolean;
 }

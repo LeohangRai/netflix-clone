@@ -4,28 +4,28 @@ import { FetchState, Movie } from '../common/types';
 import { ActionType } from '../common/enums';
 import { createFetchReducer } from '../reducers/fetch-reducer';
 
-const initialState: FetchState<Movie[]> = {
+const initialState: FetchState<Movie> = {
   data: null,
   error: null,
   loading: false
 };
 
-const fetchMoviesReducer = createFetchReducer<Movie[]>();
+const fetchMovieReducer = createFetchReducer<Movie>();
 
-const useFetchMovies = () => {
+const useFetchMovie = (id: string) => {
   const [{ data, loading, error }, dispatch] = useReducer(
-    fetchMoviesReducer,
+    fetchMovieReducer,
     initialState
   );
 
   useEffect(() => {
-    fetchMoviesList();
+    fetchMovieData();
   }, []);
 
-  const fetchMoviesList = async () => {
+  const fetchMovieData = async () => {
     dispatch({ type: ActionType.FETCHING_DATA });
     try {
-      const { data } = await axios.get('http://localhost:8080/movies');
+      const { data } = await axios.get(`http://localhost:8080/movies/${id}`);
       dispatch({ type: ActionType.FETCH_SUCCESS, payload: data });
     } catch (error) {
       dispatch({
@@ -37,4 +37,4 @@ const useFetchMovies = () => {
   return { data, loading, error };
 };
 
-export default useFetchMovies;
+export default useFetchMovie;
