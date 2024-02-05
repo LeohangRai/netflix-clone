@@ -92,11 +92,11 @@
   {
     "id": "11",
     "title": "Black Mirror",
-    "description": "A bunch of weird episodes",
-    "thumbnailUrl": "https://occ-0-1123-1723.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABUsmwxYNwp0KK2DL2ooVXzexYezjr4WmcihzCIpfX0PApo38rwV2koouiWoyVqSCbCYqVolq6qQV_iLBt_xhPB7C-8qnDmySVpbv0kJ0C87slXAJxnkkn6jc.jpg?r=977",
+    "description": "Twisted tales run wild in this mind-bending anthology series that reveals humanity's worst traits, greatest innovations and more.",
+    "thumbnailUrl": "https://hashtaglegend.com/storage/app/media/2019%20Articles/May/Ntflix%20black%20mirror/cropped-images/og-0-0-0-0-1558510331.jpeg",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
     "duration": "2 hours",
-    "genre": "Drama"
+    "genre": "Sci-Fi, TV Dramas"
   },
   {
     "id": "12",
@@ -118,12 +118,11 @@
   },
   {
     "id": "14",
-    "title": "Nathan for You",
-    "description": "Funny awkward guy tries to fix people's problems",
-    "thumbnailUrl": "https://yt3.ggpht.com/wyfo87snJ04qrxIYt513gT9t7uwhcu7CgNfqmmrhiSkEU9IrDHl13kR2pykOM2equFgRI4huJw=w2120-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
-    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+    "title": "Blue Eye Samurai",
+    "description": "Lone-wolf warrior Mizu gets stuck with an unexpected travel companion, while Princess Akemi grasps for a way to control her future.",
+    "thumbnailUrl": "https://imageio.forbes.com/specials-images/imageserve/65525e3db4191d4f23ef1c98/blue/960x0.png?format=png&width=1440",
     "duration": "2 hours",
-    "genre": "Comedy"
+    "genre": "Animation"
   },
   {
     "id": "15",

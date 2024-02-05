@@ -1,12 +1,13 @@
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import { PlayIcon } from '@heroicons/react/solid';
-import BlackMirrorThumbnailImg from '../../assets/black-mirror.jpeg';
+import { Movie } from '../../common/types';
 
-export default function MovieCard() {
+export default function MovieCard({ movie }: { readonly movie: Movie }) {
+  const { thumbnailUrl, title, description, duration, genre } = movie;
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw] w-[24%]">
       <img
-        src={BlackMirrorThumbnailImg}
+        src={thumbnailUrl}
         alt="Movie"
         draggable={false}
         className="
@@ -43,7 +44,7 @@ export default function MovieCard() {
         "
       >
         <img
-          src={BlackMirrorThumbnailImg}
+          src={thumbnailUrl}
           alt="Movie"
           draggable={false}
           className="
@@ -78,16 +79,13 @@ export default function MovieCard() {
               <ChevronDownIcon className="w-4 lg:w-6 text-white group-hover/item:text-neutral-300" />
             </div>
           </div>
-          <p className="mt-4 text-white font-semibold text-2xl">Black Mirror</p>
-          <p className="text-gray-400">
-            Twisted tales run wild in this mind-bending anthology series that
-            reveals humanity's worst traits, greatest innovations and more.
-          </p>
+          <p className="mt-4 text-white font-semibold text-2xl">{title}</p>
+          <p className="text-gray-400">{description}</p>
           <div className="flex flex-row items-center mt-4 gap-2 ">
-            <p className="text-white text-[10px] lg:text-sm">7 hours</p>
+            <p className="text-white text-[10px] lg:text-sm">{duration}</p>
           </div>
           <div className="flex flex-row items-center gap-2 mt-4 text-[8px] text-white lg:text-sm">
-            <p>Dystopia</p>
+            <p>{genre}</p>
           </div>
         </div>
       </div>
