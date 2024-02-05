@@ -18,8 +18,19 @@ app.get('/', (_req, res) => {
   });
 });
 
-app.get('/movies', (req, res) => {
+app.get('/movies', (_req, res) => {
   return res.send(moviesData);
+});
+
+app.get('/movies/:id', (req, res) => {
+  const { id } = req.params;
+  const movie = moviesData.find((movie) => movie.id == id);
+  if (!movie) {
+    return res.status(404).json({
+      message: 'Movie not found!'
+    });
+  }
+  return res.send(movie);
 });
 
 app.listen(SERVER_PORT, () => {
