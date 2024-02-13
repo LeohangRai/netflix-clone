@@ -3,15 +3,15 @@ import { ActionType } from '../common/enums';
 
 export function createFetchReducer<K>(initialState?: FetchState<K>) {
   return function (
-    _state: FetchState<K>,
+    state: FetchState<K>,
     action: FetchAction<K>
   ): FetchState<K> {
     switch (action.type) {
       case ActionType.FETCHING_DATA:
         return {
+          ...state,
           loading: true,
-          error: null,
-          data: null
+          error: null
         };
       case ActionType.FETCH_ERROR:
         return {

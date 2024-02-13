@@ -4,7 +4,7 @@ import MovieList from '../components/movies/MovieList';
 import useFetchMovies from '../hooks/useFetchMovies';
 
 export default function BrowsePage() {
-  const { data, loading, error } = useFetchMovies();
+  const { data, loading, error } = useFetchMovies(0);
 
   return (
     <div>

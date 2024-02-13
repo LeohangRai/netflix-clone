@@ -12,7 +12,7 @@ const initialState: FetchState<Movie[]> = {
 
 const fetchMoviesReducer = createFetchReducer<Movie[]>();
 
-const useFetchMovies = () => {
+const useFetchMovies = (offset: number) => {
   const [{ data, loading, error }, dispatch] = useReducer(
     fetchMoviesReducer,
     initialState
@@ -20,13 +20,23 @@ const useFetchMovies = () => {
 
   useEffect(() => {
     fetchMoviesList();
-  }, []);
+  }, [offset]);
 
   const fetchMoviesList = async () => {
     dispatch({ type: ActionType.FETCHING_DATA });
     try {
-      const { data } = await axios.get('http://localhost:8080/movies');
-      dispatch({ type: ActionType.FETCH_SUCCESS, payload: data });
+      const response = await axios.get(
+        `http://localhost:8080/movies?offset=${offset}`
+      );
+      /* 
+        instead of replacing the data (payload) with new set of data, we combine the old data and new set of data 
+        and pass them as the payload to the dispatch function 
+        (meaning, if the 'data' object already exists, combine the old and new data; otherwise just pass the newly obtained data as the payload)
+      */
+      const moviesData = data
+        ? [...data, ...response.data.movies]
+        : response.data.movies;
+      dispatch({ type: ActionType.FETCH_SUCCESS, payload: moviesData });
     } catch (error) {
       dispatch({
         type: ActionType.FETCH_ERROR,
