@@ -18,8 +18,14 @@ app.get('/', (_req, res) => {
   });
 });
 
-app.get('/movies', (_req, res) => {
-  return res.send(moviesData);
+app.get('/movies', (req, res) => {
+  const offset = parseInt(req.query.offset) || 0;
+  const limit = 12;
+  const paginatedMoviesData = [...moviesData].slice(offset, offset + limit);
+  return res.json({
+    movies: paginatedMoviesData,
+    total: moviesData.length
+  });
 });
 
 app.get('/movies/:id', (req, res) => {
