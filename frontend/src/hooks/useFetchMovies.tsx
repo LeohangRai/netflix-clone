@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { FetchState, Movie } from '../common/types';
 import { ActionType } from '../common/enums';
 import { createFetchReducer } from '../reducers/fetch-reducer';
@@ -17,12 +17,14 @@ const useFetchMovies = (offset: number) => {
     fetchMoviesReducer,
     initialState
   );
+  const [totalMovies, setTotalMovies] = useState<number | null>(null);
 
   useEffect(() => {
     fetchMoviesList();
   }, [offset]);
 
   const fetchMoviesList = async () => {
+    if (data && totalMovies && data.length >= totalMovies) return;
     dispatch({ type: ActionType.FETCHING_DATA });
     try {
       const response = await axios.get(
@@ -36,6 +38,7 @@ const useFetchMovies = (offset: number) => {
       const moviesData = data
         ? [...data, ...response.data.movies]
         : response.data.movies;
+      setTotalMovies(response.data.total);
       dispatch({ type: ActionType.FETCH_SUCCESS, payload: moviesData });
     } catch (error) {
       dispatch({

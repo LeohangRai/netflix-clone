@@ -3,11 +3,20 @@ import { PlayIcon } from '@heroicons/react/solid';
 import { Movie } from '../../common/types';
 import { useNavigate } from 'react-router-dom';
 
-export default function MovieCard({ movie }: { readonly movie: Movie }) {
+export default function MovieCard({
+  movie,
+  intersectionHandler
+}: {
+  readonly movie: Movie;
+  readonly intersectionHandler?: (node: HTMLDivElement) => void;
+}) {
   const navigateTo = useNavigate();
   const { id, thumbnailUrl, title, description, duration, genre } = movie;
   return (
-    <div className="group bg-zinc-900 col-span relative h-[12vw] w-[24%]">
+    <div
+      className="group bg-zinc-900 col-span relative h-[12vw] w-[24%]"
+      ref={intersectionHandler}
+    >
       <img
         src={thumbnailUrl}
         alt="Movie"
