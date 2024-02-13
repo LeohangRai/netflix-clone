@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const moviesData = require('./movies-data.json');
+const { delay } = require('./utils');
 
 const SERVER_PORT = process.env.PORT || 8080;
 const CORS_OPTIONS = {
@@ -18,10 +19,11 @@ app.get('/', (_req, res) => {
   });
 });
 
-app.get('/movies', (req, res) => {
+app.get('/movies', async (req, res) => {
   const offset = parseInt(req.query.offset) || 0;
   const limit = 12;
   const paginatedMoviesData = [...moviesData].slice(offset, offset + limit);
+  await delay(3000); // simulate network delay
   return res.json({
     movies: paginatedMoviesData,
     total: moviesData.length
