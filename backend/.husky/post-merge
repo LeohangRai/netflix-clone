@@ -1,0 +1,2 @@
+cd backend  # because we are installing husky from the parent directory (check the 'prepare' command in the 'package.json' file)
+yarn
