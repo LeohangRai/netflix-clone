@@ -1,11 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/server.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
-    "seed": "node ./database/seeders/moviesDataSeeder.js"
+    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
+    "seed": "node ./src/database/seeders/moviesDataSeeder.js"
   },
   "license": "MIT",
   "dependencies": {

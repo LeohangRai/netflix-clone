@@ -1,5 +1,5 @@
 const { prisma } = require('..');
-const moviesData = require('../../movies-data.json');
+const moviesData = require('./data/movies-data.json');
 
 const seedMoviesData = async () => {
   await prisma.$queryRaw`TRUNCATE TABLE public."movies" RESTART IDENTITY;`;
