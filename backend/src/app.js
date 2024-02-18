@@ -6,9 +6,10 @@ require('./configs/passport');
 const globalErrorHandler = require('./middlewares/global-error-handler');
 const moviesRouter = require('./routes/movies');
 const authRouter = require('./routes/auth');
+const { SERVER_CONFIGS } = require('./configs');
 
 const CORS_OPTIONS = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173'
+  origin: SERVER_CONFIGS.FRONTEND_URL
 };
 
 const app = express();
