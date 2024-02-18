@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { StatusCodes } = require('http-status-codes');
 const moviesData = require('../database/seeders/data/movies-data.json');
 const { delay } = require('../utils');
 
@@ -17,7 +18,7 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
   const movie = moviesData.find((movie) => movie.id == id);
   if (!movie) {
-    return res.status(404).json({
+    return res.status(StatusCodes.NOT_FOUND).json({
       message: 'Movie not found!'
     });
   }

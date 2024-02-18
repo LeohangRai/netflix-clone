@@ -1,18 +1,19 @@
 const { ZodError } = require('zod');
+const { StatusCodes } = require('http-status-codes');
 const wrapNext = require('./wrap-next');
 
 function validate(schema) {
-  wrapNext(async (req, res, next) => {
+  return wrapNext(async (req, res, next) => {
     try {
       await schema.parseAsync({
         params: req.params,
         query: req.query,
-        boyd: req.body
+        body: req.body
       });
       next();
     } catch (error) {
       if (error instanceof ZodError) {
-        return res.status(422).json({
+        return res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({
           status: 'fail',
           errors: error.errors
         });
