@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const { StatusCodes } = require('http-status-codes');
+const passport = require('passport');
+require('./configs/passport');
 const globalErrorHandler = require('./middlewares/global-error-handler');
 const moviesRouter = require('./routes/movies');
 const authRouter = require('./routes/auth');
@@ -12,6 +14,7 @@ const CORS_OPTIONS = {
 const app = express();
 app.use(express.json());
 app.use(cors(CORS_OPTIONS));
+app.use(passport.initialize());
 
 app.get('/', (_req, res) => {
   return res.json({

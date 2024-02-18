@@ -1,6 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
 const {
-  hashPasswordBeforeCreateOrUpdate
+  hashPasswordBeforeCreateOrUpdate,
+  findOneForLogin,
+  isPasswordValid
 } = require('../../prisma/extensions/users.extensions');
 
 /* 
@@ -10,5 +12,8 @@ const {
 */
 
 module.exports = {
-  prisma: new PrismaClient().$extends(hashPasswordBeforeCreateOrUpdate)
+  prisma: new PrismaClient()
+    .$extends(hashPasswordBeforeCreateOrUpdate)
+    .$extends(findOneForLogin)
+    .$extends(isPasswordValid)
 };
