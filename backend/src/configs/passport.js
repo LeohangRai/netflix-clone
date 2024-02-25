@@ -19,7 +19,7 @@ passport.use(
     try {
       const user = await prisma.users.findOneForLogin({
         where: {
-          username
+          OR: [{ username }, { email: username }]
         }
       });
       if (!user?.isPasswordValid(password)) {
