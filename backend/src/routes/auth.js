@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const passport = require('passport');
 const { StatusCodes } = require('http-status-codes');
-const { registerUser } = require('../controllers/auth.controller');
+const { registerUser, getProfile } = require('../controllers/auth.controller');
 const wrapNext = require('../middlewares/wrap-next');
 const { validate } = require('../middlewares/validate');
 const { registerUserSchema, loginSchema } = require('../schemas/auth.schema');
 const CustomError = require('../errors/custom-error');
+const { authenticateJWT } = require('../middlewares/authenticate-jwt');
 
 router.post('/signup', validate(registerUserSchema), wrapNext(registerUser));
 
@@ -20,5 +21,9 @@ router.post('/login', validate(loginSchema), (req, res, next) => {
     return res.json(user);
   })(req, res, next);
 });
+
+router.use(authenticateJWT);
+
+router.get('/profile', wrapNext(getProfile));
 
 module.exports = router;

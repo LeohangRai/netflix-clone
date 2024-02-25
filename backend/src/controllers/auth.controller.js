@@ -19,6 +19,21 @@ async function registerUser(req, res) {
   });
 }
 
+async function getProfile(req, res) {
+  const user = req.user;
+  const profile = await prisma.users.findUnique({
+    where: {
+      id: user.id
+    }
+  });
+  const { username, email } = profile;
+  return res.status(StatusCodes.OK).json({
+    status: 'success',
+    data: { username, email }
+  });
+}
+
 module.exports = {
-  registerUser
+  registerUser,
+  getProfile
 };
