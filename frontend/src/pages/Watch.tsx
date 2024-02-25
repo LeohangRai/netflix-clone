@@ -18,7 +18,7 @@ export default function WatchPage() {
       <nav className="fixed w-full flex items-center gap-8 p-4 z-10 bg-black bg-opacity-80">
         <ArrowLeftIcon
           onClick={() => navigateTo('/browse')}
-          className="w-10 text-white cursor-pointer hover:opacity-80 hover:opacity-80 transition"
+          className="w-10 text-white cursor-pointer hover:opacity-80 transition"
         />
         <p className="text-white text-3xl font-bold">
           <span className="font-light">Watching:</span> {title}

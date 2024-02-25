@@ -8,6 +8,7 @@ import {
   createRoutesFromElements
 } from 'react-router-dom';
 import HomePage from './pages/Home.tsx';
+import SignupPage from './pages/Signup.tsx';
 import LoginPage from './pages/Login.tsx';
 import PlansPage from './pages/SubscriptionPlans.tsx';
 import BrowsePage from './pages/Browse.tsx';
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<HomePage />} />
+      <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/plans" element={<PlansPage />} />
       <Route path="/browse" element={<BrowsePage />} />

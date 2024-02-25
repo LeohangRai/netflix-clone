@@ -2,16 +2,17 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../components/Input';
 import NavBar from '../components/NavBar';
 
-export default function LoginPage() {
+export default function SignupPage() {
   const navigateTo = useNavigate();
   return (
     <div className="relative bg-black h-screen w-screen bg-opacity-50">
       <NavBar />
       <div className="flex justify-center items-center h-full">
         <div className="bg-black bg-opacity-70 p-16 self-center mt-2 w-full max-w-md rounded">
-          <h2 className="text-white text-4xl mb-8 font-semibold">Sign In</h2>
+          <h2 className="text-white text-4xl mb-8 font-semibold">Sign Up</h2>
           <form action="" className="flex flex-col gap-4">
-            <Input id="email" type="email" label="Email Address " />
+            <Input id="username" type="text" label="Username" />
+            <Input id="email" type="email" label="Email Address" />
             <Input id="password" type="password" label="Password" />
             <input
               type="submit"
@@ -19,12 +20,12 @@ export default function LoginPage() {
             />
           </form>
           <p className="text-neutral-500 mt-12">
-            New to Netflix?{''}
+            Already have an account?{''}
             <span
-              onClick={() => navigateTo('/signup')}
+              onClick={() => navigateTo('/login')}
               className="text-white ml-1 hover:underline cursor-pointer"
             >
-              Sign up now.
+              Login here.
             </span>
           </p>
         </div>
