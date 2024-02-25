@@ -4,12 +4,12 @@ const { StatusCodes } = require('http-status-codes');
 const { registerUser } = require('../controllers/auth.controller');
 const wrapNext = require('../middlewares/wrap-next');
 const { validate } = require('../middlewares/validate');
-const { registerUserSchema } = require('../schemas/auth.schema');
+const { registerUserSchema, loginSchema } = require('../schemas/auth.schema');
 const CustomError = require('../errors/custom-error');
 
 router.post('/signup', validate(registerUserSchema), wrapNext(registerUser));
 
-router.post('/login', (req, res, next) => {
+router.post('/login', validate(loginSchema), (req, res, next) => {
   passport.authenticate('local', { session: false }, (err, user, info) => {
     if (err) {
       return next(err);

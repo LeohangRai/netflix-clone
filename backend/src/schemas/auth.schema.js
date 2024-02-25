@@ -46,6 +46,14 @@ const registerUserSchema = object({
   })
 });
 
+const loginSchema = object({
+  body: object({
+    username: string({ required_error: 'Username is required' }),
+    password: string({ required_error: 'Password is required' })
+  })
+});
+
 module.exports = {
-  registerUserSchema
+  registerUserSchema,
+  loginSchema
 };

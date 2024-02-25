@@ -33,8 +33,10 @@ const findOneForLogin = {
   model: {
     users: {
       async findOneForLogin(condition) {
-        const { id, username, email, isPasswordValid } =
+        const user =
           await Prisma.getExtensionContext(this).findFirst(condition);
+        if (!user) return null;
+        const { id, username, email, isPasswordValid } = user;
         return {
           id,
           username,
