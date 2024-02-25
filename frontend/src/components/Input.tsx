@@ -1,12 +1,19 @@
-export default function Input() {
+interface InputProps {
+  readonly id: string;
+  readonly label: string;
+  readonly type?: string;
+}
+
+export default function Input({ id, label, type }: InputProps) {
   return (
     <div className="relative">
       <input
+        type={type}
+        id={id}
         className="block rounded-md px-6 pt-6 pb-1 w-full text-md text-white bg-neutral-700 appearance-none focus:outline-none focus:ring-0 peer invalid:border-b-1"
-        id="email"
       />
       <label
-        htmlFor="email"
+        htmlFor={id}
         className="absolute 
           text-md
           text-zinc-400
@@ -23,7 +30,7 @@ export default function Input() {
           peer-focus:scale-75
           peer-focus:-translate-y-3"
       >
-        Email
+        {label}
       </label>
     </div>
   );
