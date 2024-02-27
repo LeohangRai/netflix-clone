@@ -11,8 +11,13 @@ export default function LoginPage() {
         <div className="bg-black bg-opacity-70 p-16 self-center mt-2 w-full max-w-md rounded">
           <h2 className="text-white text-4xl mb-8 font-semibold">Sign In</h2>
           <form action="" className="flex flex-col gap-4">
-            <Input id="email" type="email" label="Email Address " />
-            <Input id="password" type="password" label="Password" />
+            <Input name="email" id="email" type="text" label="Email Address " />
+            <Input
+              name="password"
+              id="password"
+              type="password"
+              label="Password"
+            />
             <input
               type="submit"
               className="bg-red-400 hover:bg-red-700 hover:cursor-pointer text-white rounded-md w-full mt-10 py-3"
