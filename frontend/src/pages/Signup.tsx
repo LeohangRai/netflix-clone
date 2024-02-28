@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Input from '../components/Input';
+import Input from '../components/auth/SignupInput';
 import NavBar from '../components/NavBar';
 import {
   FieldErrors,
@@ -11,12 +11,12 @@ import { createContext } from 'react';
 import { RegistrationFormFields, registerSchema } from '../schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-type AuthFormContext = {
+type SignupFormContext = {
   register: null | UseFormRegister<RegistrationFormFields>;
   errors: FieldErrors<RegistrationFormFields>;
 };
 
-export const AuthFormContext = createContext<AuthFormContext>({
+export const SignupFormContext = createContext<SignupFormContext>({
   register: null,
   errors: {}
 });
@@ -41,7 +41,7 @@ export default function SignupPage() {
       <div className="flex justify-center items-center h-full">
         <div className="bg-black bg-opacity-70 p-16 self-center mt-2 w-full max-w-md rounded">
           <h2 className="text-white text-4xl mb-8 font-semibold">Sign Up</h2>
-          <AuthFormContext.Provider
+          <SignupFormContext.Provider
             value={{
               register,
               errors
@@ -80,7 +80,7 @@ export default function SignupPage() {
                 className="bg-red-400 hover:bg-red-700 hover:cursor-pointer text-white rounded-md w-full mt-10 py-3"
               />
             </form>
-          </AuthFormContext.Provider>
+          </SignupFormContext.Provider>
           <p className="text-neutral-500 mt-12">
             Already have an account?{''}
             <span

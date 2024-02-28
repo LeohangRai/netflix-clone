@@ -1,24 +1,19 @@
 import { useContext } from 'react';
-import { AuthFormContext } from '../pages/Signup';
-import { RegistrationFormFields } from '../schemas';
+import { LoginFormContext } from '../../pages/Login';
+import { LoginFormFields } from '../../schemas';
 import { ErrorMessage } from '@hookform/error-message';
+import { renderError } from '../../common/util-components';
 
 interface InputProps {
-  readonly name: keyof RegistrationFormFields;
+  readonly name: keyof LoginFormFields;
   readonly id: string;
   readonly label: string;
   readonly type?: string;
 }
 
 export default function Input({ name, id, label, type }: InputProps) {
-  const { register, errors } = useContext(AuthFormContext);
+  const { register, errors } = useContext(LoginFormContext);
   if (!register) return; // this won't happen, trust me ;)
-
-  // render function for the <ErrorMessage /> component
-  const renderError = ({ message }: { message: string }) => (
-    <p className="text-red-500">{message}</p>
-  );
-
   return (
     <div className="relative">
       <input

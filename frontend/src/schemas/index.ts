@@ -1,3 +1,9 @@
+/* 
+NOTE:
+- z.string() accepts empty string, that is why I'm using the z.min(1) for checking that the field is not empty.
+- The reason why I'm leaving the 'required_error' option in z.string() is so that this schema is usable in the server as well.
+*/
+
 import { z } from 'zod';
 
 export const registerSchema = z
@@ -31,8 +37,14 @@ export const registerSchema = z
 
 export type RegistrationFormFields = z.infer<typeof registerSchema>;
 
-/* 
-NOTE:
-- z.string() accepts empty string, that is why I'm using the z.min(1) for checking that the field is not empty.
-- The reason why I'm leaving the 'required_error' option in z.string() is so that this schema is usable in the server as well.
-*/
+export const loginSchema = z.object({
+  email: z
+    .string({ required_error: 'Email is required' })
+    .min(1, { message: 'Email is required' })
+    .email({ message: 'Enter a valid email' }),
+  password: z
+    .string({ required_error: 'Password is required' })
+    .min(1, { message: 'Password is required' })
+});
+
+export type LoginFormFields = z.infer<typeof loginSchema>;
